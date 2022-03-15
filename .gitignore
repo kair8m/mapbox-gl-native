@@ -61,6 +61,9 @@ package-lock.json
 .vscode
 mapbox-gl-native.code-workspace
 
+# Clion
+.idea
+
 # Generated list files from code generation
 /scripts/generate-file-lists.list
 /scripts/generate-shaders.list
