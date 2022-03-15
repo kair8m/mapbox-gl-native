@@ -96,11 +96,6 @@ target_link_libraries(
         mbgl-vendor-sqlite
 )
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/bin)
-add_subdirectory(${PROJECT_SOURCE_DIR}/expression-test)
-add_subdirectory(${PROJECT_SOURCE_DIR}/platform/glfw)
-add_subdirectory(${PROJECT_SOURCE_DIR}/platform/node)
-
 add_executable(
     mbgl-test-runner
     ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/test/main.cpp
