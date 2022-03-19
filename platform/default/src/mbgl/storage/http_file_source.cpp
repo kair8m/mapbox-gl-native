@@ -1,4 +1,4 @@
-#include <mbgl/storage/http_file_source.hpp>
+#include <http_file_source.hpp>
 #include <mbgl/storage/resource.hpp>
 #include <mbgl/storage/response.hpp>
 #include <mbgl/util/logging.hpp>

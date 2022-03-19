@@ -1,6 +1,6 @@
 #include <mbgl/platform/settings.hpp>
 #include <mbgl/storage/file_source_request.hpp>
-#include <mbgl/storage/http_file_source.hpp>
+#include <http_file_source.hpp>
 #include <mbgl/storage/network_status.hpp>
 #include <mbgl/storage/online_file_source.hpp>
 #include <mbgl/storage/resource_transform.hpp>

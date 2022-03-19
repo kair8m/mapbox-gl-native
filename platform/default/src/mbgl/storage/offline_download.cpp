@@ -2,7 +2,7 @@
 #include <mbgl/storage/offline_download.hpp>
 #include <mbgl/storage/resource.hpp>
 #include <mbgl/storage/response.hpp>
-#include <mbgl/storage/http_file_source.hpp>
+#include <http_file_source.hpp>
 #include <mbgl/style/parser.hpp>
 #include <mbgl/style/sources/vector_source.hpp>
 #include <mbgl/style/sources/raster_source.hpp>

@@ -9,7 +9,7 @@
 #include <mbgl/storage/offline.hpp>
 #include <mbgl/storage/offline_database.hpp>
 #include <mbgl/storage/offline_download.hpp>
-#include <mbgl/storage/http_file_source.hpp>
+#include <http_file_source.hpp>
 #include <mbgl/util/run_loop.hpp>
 #include <mbgl/util/io.hpp>
 #include <mbgl/util/compression.hpp>

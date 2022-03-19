@@ -1,4 +1,4 @@
-#include <mbgl/storage/http_file_source.hpp>
+#include <http_file_source.hpp>
 #include <mbgl/storage/resource.hpp>
 #include <mbgl/test/util.hpp>
 #include <mbgl/util/chrono.hpp>

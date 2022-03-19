@@ -529,7 +529,6 @@ add_library(
     ${PROJECT_SOURCE_DIR}/src/mbgl/sprite/sprite_parser.hpp
     ${PROJECT_SOURCE_DIR}/src/mbgl/storage/asset_file_source.hpp
     ${PROJECT_SOURCE_DIR}/src/mbgl/storage/file_source_manager.cpp
-    ${PROJECT_SOURCE_DIR}/src/mbgl/storage/http_file_source.hpp
     ${PROJECT_SOURCE_DIR}/src/mbgl/storage/local_file_source.hpp
     ${PROJECT_SOURCE_DIR}/src/mbgl/storage/main_resource_loader.hpp
     ${PROJECT_SOURCE_DIR}/src/mbgl/storage/network_status.cpp
@@ -1040,6 +1039,10 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL Darwin)
 else()
     message(FATAL_ERROR "Unsupported target platform: " ${CMAKE_SYSTEM_NAME})
 endif()
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/platform/http)
+
+target_link_libraries(mbgl-core PRIVATE mbgl-http)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/test)
 add_subdirectory(${PROJECT_SOURCE_DIR}/benchmark)
