@@ -1,3 +1,7 @@
+if(TARGET mbgl-http)
+    return()
+endif()
+
 add_library(
         mbgl-http STATIC
         ${PROJECT_SOURCE_DIR}/platform/http/http_file_source.hpp
@@ -111,6 +115,12 @@ if (CMAKE_SYSTEM_NAME STREQUAL Darwin OR CMAKE_SYSTEM_NAME STREQUAL iOS)
     target_compile_options(mbgl-http PUBLIC -fobjc-arc)
 endif ()
 
+target_link_libraries(
+        mbgl-http
+        PRIVATE
+        mbgl-compiler-options
+)
+
 set_target_properties(
         mbgl-http
         PROPERTIES
@@ -118,4 +128,5 @@ set_target_properties(
         INTERFACE_MAPBOX_URL "https://github.com/mapbox/mapbox-gl-native"
         INTERFACE_MAPBOX_AUTHOR "Mapbox candidate Kair"
         INTERFACE_MAPBOX_LICENSE ${PROJECT_SOURCE_DIR}/LICENSE.md
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
