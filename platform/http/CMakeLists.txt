@@ -90,9 +90,24 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL Android)
 elseif (CMAKE_SYSTEM_NAME STREQUAL iOS)
     setup_apple_platform()
 elseif (CMAKE_SYSTEM_NAME STREQUAL Linux)
+    find_package(CURL REQUIRED)
     file(GLOB mbgl_HTTP_LIB_PLATFORM_BACKEND_SOURCES
             $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/storage/http_file_source.cpp>
             )
+
+    target_include_directories(
+            mbgl-http
+            PRIVATE
+            ${PROJECT_SOURCE_DIR}/platform/default/include
+            ${CURL_INCLUDE_DIRS}
+    )
+    target_link_libraries(
+            mbgl-http
+            PRIVATE
+            ${CURL_LIBRARIES}
+    )
+    target_compile_options(mbgl-http PUBLIC -std=c++11 -fpermissive -w -Wall)
+    set_target_properties(mbgl-http PROPERTIES LINKER_LANGUAGE CXX)
 elseif (CMAKE_SYSTEM_NAME STREQUAL Darwin)
     setup_apple_platform()
 else ()
