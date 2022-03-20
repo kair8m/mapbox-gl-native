@@ -84,9 +84,30 @@ if (MBGL_WITH_QT)
             $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/qt/src/http_request.hpp>
             )
 elseif (CMAKE_SYSTEM_NAME STREQUAL Android)
+    find_package(CURL REQUIRED)
     file(GLOB mbgl_HTTP_LIB_PLATFORM_BACKEND_SOURCES
             $<$<BOOL:${MBGL_PUBLIC_BUILD}>:${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/storage/http_file_source.cpp>
             )
+    target_compile_options(mbgl-http INTERFACE $<$<CONFIG:Release>:-Oz> $<$<CONFIG:Release>:-Qunused-arguments> $<$<CONFIG:Release>:-flto>)
+    target_link_libraries(
+            mbgl-http
+            INTERFACE
+            $<$<CONFIG:Release>:-O2>
+            $<$<CONFIG:Release>:-Wl,--icf=all>
+            $<$<CONFIG:Release>:-flto>
+            $<$<CONFIG:Release>:-fuse-ld=gold>
+    )
+    target_include_directories(
+            mbgl-http
+            PRIVATE
+            ${PROJECT_SOURCE_DIR}/platform/default/include
+            ${CURL_INCLUDE_DIRS}
+    )
+    target_link_libraries(
+            mbgl-http
+            PRIVATE
+            ${CURL_LIBRARIES}
+    )
 elseif (CMAKE_SYSTEM_NAME STREQUAL iOS)
     setup_apple_platform()
 elseif (CMAKE_SYSTEM_NAME STREQUAL Linux)
