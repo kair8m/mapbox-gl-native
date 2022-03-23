@@ -7,5 +7,7 @@ BinPackArguments: false
 BinPackParameters: false
 ColumnLimit: 120
 IndentWidth: 4
+ObjCBlockIndentWidth: 4
+ObjCSpaceAfterProperty: true
 SpacesBeforeTrailingComments: 1
 ...
